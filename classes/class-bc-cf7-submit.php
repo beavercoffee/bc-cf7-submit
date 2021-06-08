@@ -54,6 +54,9 @@ if(!class_exists('BC_CF7_Submit')){
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function wpcf7_enqueue_scripts(){
+            $src = plugin_dir_url($this->file) . 'assets/bc-cf7-submit.css';
+            $ver = filemtime(plugin_dir_path($this->file) . 'assets/bc-cf7-submit.css');
+            wp_enqueue_style('bc-cf7-submit', $src, ['contact-form-7'], $ver);
             $src = plugin_dir_url($this->file) . 'assets/bc-cf7-submit.js';
             $ver = filemtime(plugin_dir_path($this->file) . 'assets/bc-cf7-submit.js');
             wp_enqueue_script('bc-cf7-submit', $src, ['contact-form-7'], $ver, true);
