@@ -2,7 +2,7 @@
 /*
 Author: Beaver Coffee
 Author URI: https://beaver.coffee
-Description: Improve Contact Form 7 submit behavior.
+Description: Prevent Contact Form 7 accidental submissions.
 Domain Path:
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

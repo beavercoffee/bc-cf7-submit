@@ -13,7 +13,7 @@ BC CF7 Submit
 
 == Description ==
 
-Improve Contact Form 7 submit behavior.
+Prevent Contact Form 7 accidental submissions.
 
 == Changelog ==
 
