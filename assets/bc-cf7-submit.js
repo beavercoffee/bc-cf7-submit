@@ -27,7 +27,9 @@ if('undefined' === typeof(bc_cf7_submit)){
 			event.stopPropagation();
             switch(event.keyCode){
     			case 13:
-    				event.preventDefault();
+                    if(!jQuery(this).is('textarea')){
+                        event.preventDefault();
+                    }
     				break;
     			case 32:
     				if(jQuery(this).is('.wpcf7-submit')){
