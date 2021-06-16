@@ -12,7 +12,7 @@ Plugin URI: https://github.com/beavercoffee/bc-cf7-submit
 Requires at least: 5.7
 Requires PHP: 5.6
 Text Domain: bc-cf7-submit
-Version: 1.6.8
+Version: 1.6.16
 */
 
 if(defined('ABSPATH')){
