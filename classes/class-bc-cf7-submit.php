@@ -80,7 +80,6 @@ if(!class_exists('BC_CF7_Submit')){
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function wpcf7_feedback_response($response, $result){
-            $response['bc_loading'] = __('Loading&hellip;');
             switch($response['status']){
     			case 'init':
     			case 'validation_failed':
