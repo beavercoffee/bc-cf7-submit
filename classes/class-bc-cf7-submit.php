@@ -85,13 +85,13 @@ if(!class_exists('BC_CF7_Submit')){
     			case 'validation_failed':
     			case 'acceptance_missing':
     			case 'spam':
-    				$hidden_fields['bc_uniqid'] = '';
+    				$response['bc_uniqid'] = '';
     				break;
     			default:
-    				$hidden_fields['bc_uniqid'] = uniqid();
+    				$response['bc_uniqid'] = uniqid();
     				break;
     		}
-            return $hidden_fields;
+            return $response;
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
