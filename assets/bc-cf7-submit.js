@@ -9,7 +9,10 @@ if('undefined' === typeof(bc_cf7_submit)){
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        enable_submit: function(){
+        enable_submit: function(event){
+            if(event.detail.apiResponse.bc_uniqid){
+                jQuery('#' + event.detail.unitTag).find('input[name="bc_uniqid"]').val(event.detail.apiResponse.bc_uniqid);
+            }
             jQuery('.wpcf7-submit').removeClass('disabled');
         },
 
@@ -25,7 +28,7 @@ if('undefined' === typeof(bc_cf7_submit)){
 
         prevent_submit: function(event){
 			event.stopPropagation();
-            switch(event.keyCode){
+            switch(event.which){
     			case 13:
                     if(!jQuery(this).is('textarea')){
                         event.preventDefault();

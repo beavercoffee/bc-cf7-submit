@@ -5,7 +5,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.7
 Requires PHP: 5.6
-Stable tag: 1.6.20
+Stable tag: 1.7.8
 Tags:
 Tested up to: 5.7.2
 
@@ -13,7 +13,7 @@ BC CF7 Submit
 
 == Description ==
 
-Prevent Contact Form 7 accidental submissions.
+Prevent Contact Form 7 accidental or multiple submissions.
 
 == Changelog ==
 
