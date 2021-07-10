@@ -101,7 +101,7 @@ if(!class_exists('BC_CF7_Submit')){
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function wpcf7_form_hidden_fields($hidden_fields){
-            $hidden_fields['bc_referer'] = isset($_GET['bc_referer']) : wpcf7_sanitize_query_var($_GET['bc_referer']) : '';
+            $hidden_fields['bc_referer'] = isset($_GET['bc_referer']) ? wpcf7_sanitize_query_var($_GET['bc_referer']) : '';
             $hidden_fields['bc_uniqid'] = uniqid();
             return $hidden_fields;
         }
