@@ -84,17 +84,16 @@ if(!class_exists('BC_CF7_Submit')){
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function wpcf7_feedback_response($response, $result){
-            switch($response['status']){
-    			case 'init':
-    			case 'validation_failed':
-    			case 'acceptance_missing':
-    			case 'spam':
-    				$response['bc_uniqid'] = '';
-    				break;
-    			default:
-    				$response['bc_uniqid'] = uniqid();
-    				break;
-    		}
+            if('mail_sent' === $response['status']){
+                $response['bc_loading'] = __('Loading&hellip;');
+            } else {
+                $response['bc_loading'] = '';
+            }
+            if(in_array($response['status'], ['acceptance_missing', 'init', 'spam', 'validation_failed'])){
+                $response['bc_uniqid'] = '';
+            } else {
+                $response['bc_uniqid'] = uniqid();
+            }
             return $response;
         }
 
