@@ -58,7 +58,7 @@ if('undefined' === typeof(bc_cf7_submit)){
 
         wpcf7mailsent: function(event){
             if(event.detail.apiResponse.bc_loading){
-                jQuery('#' + event.detail.unitTag).find('.wpcf7-form').children().hide().addClass('d-none');
+                jQuery('#' + event.detail.unitTag).find('.wpcf7-form').children().hide().removeClass('d-block d-flex d-inline d-inline-block d-inline-flex d-table d-table-cell d-table-row').addClass('d-none');
                 jQuery('#' + event.detail.unitTag).find('.wpcf7-form').prepend('<div class="alert alert-info bc-cf7-submission" role="alert">' + event.detail.apiResponse.bc_loading + '</div>');
             }
             bc_cf7_submit.message = event.detail.apiResponse.message;
