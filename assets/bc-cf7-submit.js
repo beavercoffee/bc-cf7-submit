@@ -58,10 +58,7 @@ if('undefined' === typeof(bc_cf7_submit)){
 
         wpcf7mailsent: function(event){
             if(event.detail.apiResponse.bc_loading){
-                if(jQuery('#' + event.detail.unitTag).find('.bc-submit-wrap').length){
-                    jQuery('#' + event.detail.unitTag).find('.bc-submit-wrap').removeClass('d-flex').addClass('d-none');
-                }
-                jQuery('#' + event.detail.unitTag).find('.wpcf7-form').children().hide();
+                jQuery('#' + event.detail.unitTag).find('.wpcf7-form').children().hide().addClass('d-none');
                 jQuery('#' + event.detail.unitTag).find('.wpcf7-form').prepend('<div class="alert alert-info bc-cf7-submission" role="alert">' + event.detail.apiResponse.bc_loading + '</div>');
             }
             bc_cf7_submit.message = event.detail.apiResponse.message;
