@@ -47,7 +47,7 @@ if(!class_exists('BC_CF7_Submit')){
 
     	private function __construct($file = ''){
             $this->file = $file;
-            add_action('plugins_loaded', [$this, 'plugins_loaded']);
+            add_action('bc_cf7_loaded', [$this, 'bc_cf7_loaded']);
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,29 +56,30 @@ if(!class_exists('BC_CF7_Submit')){
     	//
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public function plugins_loaded(){
-            if(!defined('BC_FUNCTIONS')){
-        		return;
-        	}
-            if(!defined('WPCF7_VERSION')){
-        		return;
-        	}
+        public function bc_cf7_loaded(){
             add_action('wpcf7_enqueue_scripts', [$this, 'wpcf7_enqueue_scripts']);
+            add_action('wpcf7_enqueue_styles', [$this, 'wpcf7_enqueue_styles']);
             add_filter('wpcf7_feedback_response', [$this, 'wpcf7_feedback_response'], 10, 2);
             add_filter('wpcf7_form_hidden_fields', [$this, 'wpcf7_form_hidden_fields']);
             bc_build_update_checker('https://github.com/beavercoffee/bc-cf7-submit', $this->file, 'bc-cf7-submit');
+            do_action('bc_cf7_submit_loaded');
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public function wpcf7_enqueue_scripts(){
-            $src = plugin_dir_url($this->file) . 'assets/bc-cf7-submit.css';
-            $ver = filemtime(plugin_dir_path($this->file) . 'assets/bc-cf7-submit.css');
-            wp_enqueue_style('bc-cf7-submit', $src, [], $ver); // don't rely on wpcf7_enqueue_styles
             $src = plugin_dir_url($this->file) . 'assets/bc-cf7-submit.js';
             $ver = filemtime(plugin_dir_path($this->file) . 'assets/bc-cf7-submit.js');
             wp_enqueue_script('bc-cf7-submit', $src, ['contact-form-7'], $ver, true);
             wp_add_inline_script('bc-cf7-submit', 'bc_cf7_submit.init();');
+        }
+
+    	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        public function wpcf7_enqueue_styles(){
+            $src = plugin_dir_url($this->file) . 'assets/bc-cf7-submit.css';
+            $ver = filemtime(plugin_dir_path($this->file) . 'assets/bc-cf7-submit.css');
+            wp_enqueue_style('bc-cf7-submit', $src, ['contact-form-7'], $ver);
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
